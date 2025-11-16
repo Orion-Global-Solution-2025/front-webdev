@@ -1,4 +1,4 @@
-import Card from "./ui/card.jsx";
+import Card from "./ui/card";
 import { GraduationCap, Users2, Building2 } from "lucide-react";
 
 const benefits = [

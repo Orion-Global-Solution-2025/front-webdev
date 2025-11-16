@@ -1,4 +1,4 @@
-import Button from "./ui/button.js";
+import Button from "./ui/button";
 import heroImage from "../img/hero-classroom.jpg";
 
 const VisaoSection = () => {
@@ -29,7 +29,7 @@ const VisaoSection = () => {
             </p>
 
             <div className="flex flex-wrap gap-4">
-                <Button showArrow= {true} >
+                <Button showArrow={true}>
                 Solicitar Demonstração
               </Button>
               <Button >

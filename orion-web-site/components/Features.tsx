@@ -1,4 +1,4 @@
-import Card from "./ui/card.jsx";
+import Card from "./ui/card";
 import { Brain, TrendingUp, Users, Star, Shield, Zap } from "lucide-react";
 
 const features = [

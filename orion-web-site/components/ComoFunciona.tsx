@@ -1,4 +1,4 @@
-import Card from "./ui/card.jsx";
+import Card from "./ui/card";
 import orionLogo from "../img/orion-horizontal.png";
 import { Camera, Cpu, BarChart3, Lightbulb } from "lucide-react";
 

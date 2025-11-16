@@ -1,4 +1,4 @@
-import Button from "./ui/button.jsx";
+import Button from "./ui/button";
 import { ArrowRight, Mail } from "lucide-react";
 
 const ComponenteAcao = () => {
