@@ -45,7 +45,7 @@ export const profiles: Profile[] = [
   {
     id: 1,
     nome: "Ana Silva Costa",
-    foto: "/placeholder.svg",
+    foto: "https://randomuser.me/api/portraits/women/1.jpg",
     cargo: "Engenheira de Machine Learning",
     resumo: "Especialista em IA aplicada à educação e análise de sentimentos com 5+ anos de experiência",
     localizacao: "São Paulo/SP",
@@ -62,11 +62,7 @@ export const profiles: Profile[] = [
       }
     ],
     formacao: [
-      {
-        curso: "MSc em Ciência de Dados",
-        instituicao: "USP",
-        ano: 2021
-      }
+      { curso: "MSc em Ciência de Dados", instituicao: "USP", ano: 2021 }
     ],
     projetos: [
       {
@@ -85,7 +81,7 @@ export const profiles: Profile[] = [
   {
     id: 2,
     nome: "Carlos Mendes Oliveira",
-    foto: "/placeholder.svg",
+    foto: "https://randomuser.me/api/portraits/men/2.jpg",
     cargo: "Psicólogo Educacional",
     resumo: "Especialista em comportamento estudantil e saúde mental universitária",
     localizacao: "Rio de Janeiro/RJ",
@@ -102,11 +98,7 @@ export const profiles: Profile[] = [
       }
     ],
     formacao: [
-      {
-        curso: "Doutorado em Psicologia Educacional",
-        instituicao: "UFRJ",
-        ano: 2019
-      }
+      { curso: "Doutorado em Psicologia Educacional", instituicao: "UFRJ", ano: 2019 }
     ],
     projetos: [
       {
@@ -125,7 +117,7 @@ export const profiles: Profile[] = [
   {
     id: 3,
     nome: "Beatriz Santos",
-    foto: "/placeholder.svg",
+    foto: "https://randomuser.me/api/portraits/women/3.jpg",
     cargo: "Desenvolvedora Full Stack",
     resumo: "Desenvolvedora com foco em aplicações educacionais e dashboards analíticos",
     localizacao: "Belo Horizonte/MG",
@@ -142,11 +134,7 @@ export const profiles: Profile[] = [
       }
     ],
     formacao: [
-      {
-        curso: "Bacharelado em Ciência da Computação",
-        instituicao: "UFMG",
-        ano: 2020
-      }
+      { curso: "Bacharelado em Ciência da Computação", instituicao: "UFMG", ano: 2020 }
     ],
     projetos: [
       {
@@ -166,7 +154,7 @@ export const profiles: Profile[] = [
   {
     id: 4,
     nome: "Daniel Rodrigues Lima",
-    foto: "/placeholder.svg",
+    foto: "https://randomuser.me/api/portraits/men/4.jpg",
     cargo: "Cientista de Dados",
     resumo: "Especialista em análise preditiva e modelagem estatística para educação",
     localizacao: "Brasília/DF",
@@ -183,11 +171,7 @@ export const profiles: Profile[] = [
       }
     ],
     formacao: [
-      {
-        curso: "MSc em Estatística",
-        instituicao: "UnB",
-        ano: 2021
-      }
+      { curso: "MSc em Estatística", instituicao: "UnB", ano: 2021 }
     ],
     projetos: [
       {
@@ -206,7 +190,7 @@ export const profiles: Profile[] = [
   {
     id: 5,
     nome: "Fernanda Almeida",
-    foto: "/placeholder.svg",
+    foto: "https://randomuser.me/api/portraits/women/5.jpg",
     cargo: "Designer UX/UI",
     resumo: "Designer focada em experiências educacionais acessíveis e inclusivas",
     localizacao: "Curitiba/PR",
@@ -223,11 +207,7 @@ export const profiles: Profile[] = [
       }
     ],
     formacao: [
-      {
-        curso: "Bacharelado em Design Gráfico",
-        instituicao: "UFPR",
-        ano: 2019
-      }
+      { curso: "Bacharelado em Design Gráfico", instituicao: "UFPR", ano: 2019 }
     ],
     projetos: [
       {
@@ -246,7 +226,7 @@ export const profiles: Profile[] = [
   {
     id: 6,
     nome: "Gabriel Torres",
-    foto: "/placeholder.svg",
+    foto: "https://randomuser.me/api/portraits/men/6.jpg",
     cargo: "Engenheiro de Visão Computacional",
     resumo: "Especialista em processamento de imagens e reconhecimento facial para análise comportamental",
     localizacao: "Campinas/SP",
@@ -263,11 +243,7 @@ export const profiles: Profile[] = [
       }
     ],
     formacao: [
-      {
-        curso: "Engenharia de Computação",
-        instituicao: "UNICAMP",
-        ano: 2020
-      }
+      { curso: "Engenharia de Computação", instituicao: "UNICAMP", ano: 2020 }
     ],
     projetos: [
       {

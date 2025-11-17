@@ -1,9 +1,17 @@
 
+
+import { useState, useMemo } from "react";
 import FlagTipo from "../../components/ui/FlagTipo";
 import { SearchBar } from "../../components/ui/SearchBar";
 import  PerfilCard from "../../components/PerfilCard";
+import  ProfileDetail from "../../components/PerfilDetalhes";
+import type { Profile } from "../data/ProfilesData";
+import { profiles } from "../data/ProfilesData";
 
 const RedeSocial = () => {
+  const [selectedProfile, setSelectedProfile] = useState<Profile | null>(
+    profiles[0] || null
+  );
   return (
     <div>
       <br/>
@@ -13,7 +21,16 @@ const RedeSocial = () => {
       <FlagTipo >Exemplo1</FlagTipo>
       <FlagTipo active>Exemplo FlagTipo</FlagTipo>
       <SearchBar/>
-      <PerfilCard/>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {profiles.map((profile) => (
+          <PerfilCard
+          key={profile.id}
+          profile={profile}
+          onClick={() => setSelectedProfile(profile)}
+          />
+          ))}
+</div>
+      <ProfileDetail profile={selectedProfile} onClose={() => setSelectedProfile(null)}/>
     
       <p>Teste2</p>
     </div>
