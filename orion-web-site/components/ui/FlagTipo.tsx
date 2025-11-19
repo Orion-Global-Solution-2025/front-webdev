@@ -8,8 +8,7 @@ const baseClasses = `
 `;
 
 const activeClasses = `
-  border-transparent bg-blue-600 text-white 
-  hover:bg-blue-700
+  border-transparent bg-gradient-to-r from-[#00b4ff] to-[#8b5cf6] text-white shadow-sm hover:opacity-95
 `;
 
 const inactiveClasses = `

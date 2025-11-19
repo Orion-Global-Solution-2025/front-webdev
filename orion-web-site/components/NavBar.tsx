@@ -1,10 +1,13 @@
 import Button from "./ui/button";
 import orionLogo from "../img/orion-horizontal.png";
+import { Sun, Moon } from 'lucide-react';
 
 
-const Navbar = ({ onNavigate }) => {
+const Navbar = ({ onNavigate, onToggleTheme, theme }) => {
+  const isDark = theme === 'dark';
+  const navBg = isDark ? 'bg-background/80 text-foreground border-border' : 'bg-white/90 text-foreground border-gray-200';
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
+    <nav className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-lg border-b ${navBg}`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-2">
@@ -30,9 +33,20 @@ const Navbar = ({ onNavigate }) => {
               Contato
             </a>
           </div>
-          <Button onClick={() => onNavigate("nova")}>
-            Começar Agora
-          </Button>
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={onToggleTheme}
+              aria-label="Alternar tema"
+              className="p-2 rounded-md text-foreground hover:bg-muted"
+            >
+              {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </button>
+
+            <Button onClick={() => onNavigate("nova")}>
+              Começar Agora
+            </Button>
+          </div>
 
 
         </div>

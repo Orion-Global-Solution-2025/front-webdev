@@ -1,9 +1,11 @@
 import orionLogo from "../img/orion-logo-png-sem-frase.png";
 import { Camera, Mail, Linkedin, Twitter, Instagram } from "lucide-react";
 
-const Footer = () => {
+const Footer = ({ theme }) => {
+  const isDark = theme === 'dark';
+  const footerBg = isDark ? 'bg-card border-border text-muted-foreground' : 'bg-white border-t border-gray-200 text-gray-700';
   return (
-    <footer className="bg-card border-t border-border">
+    <footer className={`${footerBg}`}>
       <div className="container mx-auto px-4 py-12">
         <div className="grid md:grid-cols-4 gap-8">
           <div className="space-y-4">
