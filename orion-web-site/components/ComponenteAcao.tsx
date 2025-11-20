@@ -3,7 +3,10 @@ import { ArrowRight, Mail } from "lucide-react";
 
 const ComponenteAcao = () => {
   return (
-    <section className="py-24 bg-gradient-primary relative overflow-hidden">
+    <section
+      id="contato"
+      className="py-24 bg-gradient-primary relative overflow-hidden"
+    >
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:4rem_4rem]" />
       </div>

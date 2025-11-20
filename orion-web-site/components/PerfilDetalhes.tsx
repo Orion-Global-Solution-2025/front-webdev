@@ -6,7 +6,7 @@ import type { Profile } from "../src/data/ProfilesData";
 
 interface ProfileDetailProps {
   profile: Profile | null;
-  onClose?: () => void; // opcional, caso queira botão de fechar
+  onClose?: () => void; 
 }
 
 
@@ -26,7 +26,6 @@ const ProfileDetail = ({ profile, onClose }: ProfileDetailProps) => {
 
   return (
     <Card className="p-6 bg-card text-card-foreground mb-6">
-      {/* Cabeçalho */}
       <div className="flex justify-between items-start mb-6">
         <div className="flex items-start gap-4">
           <img
@@ -50,9 +49,7 @@ const ProfileDetail = ({ profile, onClose }: ProfileDetailProps) => {
         {onClose && <Button variant="outline" onClick={onClose}>Fechar</Button>}
       </div>
 
-      {/* Resumo */}
       <p className="mb-6">{profile.resumo}</p>
-
 
       <div className="mb-6">
         <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">

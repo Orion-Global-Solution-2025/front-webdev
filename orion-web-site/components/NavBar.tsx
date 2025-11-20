@@ -1,54 +1,90 @@
 import Button from "./ui/button";
 import orionLogo from "../img/orion-horizontal.png";
-import { Sun, Moon } from 'lucide-react';
+import { Sun, Moon } from "lucide-react";
 
+type Theme = "light" | "dark";
 
-const Navbar = ({ onNavigate, onToggleTheme, theme }) => {
-  const isDark = theme === 'dark';
-  const navBg = isDark ? 'bg-background/80 text-foreground border-border' : 'bg-white/90 text-foreground border-gray-200';
+interface NavbarProps {
+  onNavigate?: (page: string) => void;
+  onToggleTheme: () => void;
+  theme: Theme;
+  currentPage?: string; 
+}
+
+const navLinks = [
+  { path: "#recursos", label: "Recursos" },
+  { path: "#como-funciona", label: "Como Funciona" },
+  { path: "#beneficios", label: "Benefícios" },
+  { path: "#contato", label: "Contato" },
+];
+
+const Navbar = ({ onNavigate, onToggleTheme, theme, currentPage }: NavbarProps) => {
+  const isDark = theme === "dark";
+  const isSocial = currentPage === "rede-social";
+
+  const navBg = isDark
+    ? "bg-background/80 text-foreground border-border"
+    : "bg-white/90 text-foreground border-gray-200";
+
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-lg border-b ${navBg}`}>
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center gap-2">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-lg border-b ${navBg} ${
+        isSocial ? "group" : ""
+      }`}
+    >
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          className={`flex items-center justify-between gap-6 overflow-hidden transition-all duration-300 ${
+            isSocial ? "h-6 group-hover:h-16" : "h-16"
+          }`}
+        >
+          <div className="flex items-center gap-2 flex-shrink-0">
             <div className="h-10 rounded-lg overflow-hidden shadow-primary">
-              <img src={orionLogo} alt="Orion" className="h-full object-contain" />
+              <img
+                src={orionLogo}
+                alt="Orion"
+                className="h-full w-auto object-contain"
+              />
             </div>
-            <span className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+            <span className="text-lg font-semibold tracking-tight bg-gradient-primary bg-clip-text text-transparent">
               Orion
             </span>
           </div>
 
-          <div className="hidden md:flex items-center gap-8">
-            <a href="#recursos" className="text-foreground hover:text-primary transition-colors">
-              Recursos
-            </a>
-            <a href="#como-funciona" className="text-foreground hover:text-primary transition-colors">
-              Como Funciona
-            </a>
-            <a href="#beneficios" className="text-foreground hover:text-primary transition-colors">
-              Benefícios
-            </a>
-            <a href="#contato" className="text-foreground hover:text-primary transition-colors">
-              Contato
-            </a>
-          </div>
-          <div className="flex items-center gap-3">
+          {!isSocial && (
+            <div className="hidden md:flex flex-1 items-center justify-center gap-6 text-sm font-medium">
+              {navLinks.map((link) => (
+                <a
+                  key={link.path}
+                  href={link.path}
+                  className="hover:text-primary transition-colors"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          )}
+
+          <div className="flex items-center gap-3 flex-shrink-0">
             <button
               type="button"
               onClick={onToggleTheme}
               aria-label="Alternar tema"
-              className="p-2 rounded-md text-foreground hover:bg-muted"
+              className="p-2 rounded-md hover:bg-muted"
             >
-              {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
 
-            <Button onClick={() => onNavigate("nova")}>
-              Começar Agora
-            </Button>
+            {isSocial ? (
+              <Button onClick={() => onNavigate?.("landing")}>
+                Voltar página principal
+              </Button>
+            ) : (
+              <Button onClick={() => onNavigate?.("nova")}>
+                Começar Agora
+              </Button>
+            )}
           </div>
-
-
         </div>
       </div>
     </nav>

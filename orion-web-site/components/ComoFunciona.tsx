@@ -31,10 +31,14 @@ const steps = [
 
 const HowItWorks = () => {
   return (
-    <section className="py-24 bg-gradient-subtle relative overflow-hidden">
+    <section
+      id="como-funciona"
+      className="py-24 bg-gradient-subtle relative overflow-hidden"
+    >
       <div className="absolute inset-0 opacity-5">
         <img src={orionLogo} alt="" className="w-full h-full object-cover" />
       </div>
+
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">

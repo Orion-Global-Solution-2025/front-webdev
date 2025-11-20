@@ -1,7 +1,7 @@
 import Button from "./ui/button";
 import heroImage from "../img/hero-classroom.jpg";
 
-const VisaoSection = () => {
+const VisaoSection = ({ onSeeHowWorks }) => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-subtle">
       <div className="absolute inset-0 bg-gradient-glow opacity-50" />
@@ -29,13 +29,14 @@ const VisaoSection = () => {
             </p>
 
             <div className="flex flex-wrap gap-4">
-                <Button showArrow={true}>
+              <Button showArrow={true}>
                 Solicitar Demonstração
               </Button>
-              <Button >
+              <Button onClick={onSeeHowWorks}>
                 Ver como funciona
               </Button>
             </div>
+
 
             <div className="flex flex-wrap gap-8 pt-8 border-t border-border">
               <div>

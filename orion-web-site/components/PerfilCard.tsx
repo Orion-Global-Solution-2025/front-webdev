@@ -5,7 +5,7 @@ import type { Profile } from "../src/data/ProfilesData";
 
 interface PerfilCardProps {
   profile: Profile;
-  onClick?: () => void; // opcional, caso queira ação ao clicar
+  onClick?: () => void; 
 }
 
 export default function PerfilCard({ profile, onClick }: PerfilCardProps) {

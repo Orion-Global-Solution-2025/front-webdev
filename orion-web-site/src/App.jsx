@@ -18,6 +18,8 @@ export default function App() {
     }
   });
 
+  const [page, setPage] = useState('landing'); 
+
   useEffect(() => {
     document.documentElement.classList.toggle('dark', theme === 'dark');
   }, [theme]);
@@ -31,13 +33,33 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#00142d' }}>
-      <Navbar onToggleTheme={toggleTheme} theme={theme} />
+    <div className="min-h-screen flex flex-col bg-[#00142d]">
+      <Navbar
+        onToggleTheme={toggleTheme}
+        theme={theme}
+        currentPage={page}
+        onNavigate={(target) => {
+          if (target === 'rede-social' || target === 'nova') {
+            setPage('rede-social');
+          } else {
+            setPage('landing');
+          }
+        }}
+      />
+
       <main>
-        <RedeSocial theme={theme} />
+        {page === 'landing' ? (
+          <PaginaPrincipal
+            theme={theme}
+            onSeeHowWorks={() => setPage('rede-social')}
+          />
+        ) : (
+          <RedeSocial theme={theme} />
+        )}
       </main>
+
       <Footer theme={theme} />
-    
     </div>
   );
+
 }

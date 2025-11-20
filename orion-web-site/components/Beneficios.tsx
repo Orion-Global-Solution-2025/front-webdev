@@ -39,7 +39,7 @@ const benefits = [
 
 const Benefits = () => {
   return (
-    <section className="py-24 bg-background relative overflow-hidden">
+    <section id="beneficios" className="py-24 bg-background relative overflow-hidden">
       <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-glow blur-3xl opacity-20" />
       
       <div className="container mx-auto px-4 relative z-10">
