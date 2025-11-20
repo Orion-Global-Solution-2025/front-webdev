@@ -47,8 +47,10 @@ const RedeSocial = ({ theme }: { theme?: "light" | "dark" }) => {
         <section className="space-y-8">
           <header className="space-y-4">
             <div className="flex flex-wrap gap-2">
-              <FlagTipo>Exemplo1</FlagTipo>
-              <FlagTipo active>Exemplo FlagTipo</FlagTipo>
+              <FlagTipo>Alunos Que Passaram Pela Experiência Oriun</FlagTipo>
+              <FlagTipo active>Para Instituições</FlagTipo>
+              <FlagTipo active>Para Professores</FlagTipo>
+              <FlagTipo active>Para Alunos</FlagTipo>
             </div>
 
             <SearchBar
