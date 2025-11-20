@@ -29,13 +29,13 @@ const Navbar = ({ onNavigate, onToggleTheme, theme, currentPage }: NavbarProps) 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-lg border-b ${navBg} ${
-        isSocial ? "group" : ""
+        isSocial ? "group py-1" : ""
       }`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
-          className={`flex items-center justify-between gap-6 overflow-hidden transition-all duration-300 ${
-            isSocial ? "h-6 group-hover:h-16" : "h-16"
+          className={`flex items-center justify-between gap-6 overflow-hidden transition-all duration-300 origin-top ${
+            isSocial ? "max-h-0 group-hover:max-h-20 group-hover:py-2" : "h-16"
           }`}
         >
           <div className="flex items-center gap-2 flex-shrink-0">
