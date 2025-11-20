@@ -1,7 +1,11 @@
 import Button from "./ui/button";
-import heroImage from "../img/hero-classroom.jpg";
+import { Cpu } from "lucide-react";
 
-const VisaoSection = ({ onSeeHowWorks }) => {
+type VisaoSectionProps = {
+  onSeeHowWorks: () => void;
+};
+
+const VisaoSection = ({ onSeeHowWorks }: VisaoSectionProps) => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-subtle">
       <div className="absolute inset-0 bg-gradient-glow opacity-50" />
@@ -11,9 +15,10 @@ const VisaoSection = ({ onSeeHowWorks }) => {
       <div className="container mx-auto px-4 py-20 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
     
-          <div className="space-y-8 animate-fade-in">
-            <div className="inline-block px-4 py-2 bg-gradient-primary rounded-full text-white text-sm font-semibold">
-              Tecnologia Educacional IA
+          <div className="space-y-6 animate-fade-in">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-primary rounded-full text-white text-sm font-semibold">
+              <Cpu className="w-4 h-4" />
+              <span>Tecnologia Educacional IA</span>
             </div>
             
             <h1 className="text-5xl md:text-7xl font-bold leading-tight">
@@ -55,11 +60,15 @@ const VisaoSection = ({ onSeeHowWorks }) => {
           </div>
 
           <div className="relative lg:h-[600px] rounded-2xl overflow-hidden shadow-glow animate-fade-in-delayed">
-            <img
-              src={heroImage}
-              alt="Orion technology in classroom"
+            <video
+              src="/videos/hero-gift.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
               className="w-full h-full object-cover"
-            />
+            >
+            </video>
             <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
           </div>
         </div>

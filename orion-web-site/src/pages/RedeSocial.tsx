@@ -36,59 +36,59 @@ const RedeSocial = ({ theme }: { theme?: "light" | "dark" }) => {
 
   const hasResults = filteredProfiles.length > 0;
 
-  return (
+    return (
     <div
       className={
         isDark ? "bg-background text-foreground" : "bg-white text-gray-800"
       }
     >
-      <section className="space-y-6">
-        <header className="space-y-3">
-          <p className="text-sm opacity-70">Teste</p>
 
-          <div className="flex flex-wrap gap-2">
-            <FlagTipo>Exemplo1</FlagTipo>
-            <FlagTipo active>Exemplo FlagTipo</FlagTipo>
-          </div>
-
-          <SearchBar
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder="Buscar por nome, área ou habilidade..."
-          />
-        </header>
-
-        {hasResults ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {filteredProfiles.map((profile) => (
-              <PerfilCard
-                key={profile.id}
-                profile={profile}
-                onClick={() => setSelectedProfile(profile)}
-              />
-            ))}
-          </div>
-        ) : (
-          <div className="flex flex-col items-center justify-center py-16 gap-3 text-center">
-            <div className="w-16 h-16 rounded-full border border-dashed border-gray-300 flex items-center justify-center mb-2">
-              <span className="text-2xl">🔍</span>
+      <div className="min-h-screen max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-12">
+        <section className="space-y-8">
+          <header className="space-y-4">
+            <div className="flex flex-wrap gap-2">
+              <FlagTipo>Exemplo1</FlagTipo>
+              <FlagTipo active>Exemplo FlagTipo</FlagTipo>
             </div>
-            <p className="text-sm font-medium">Nenhum perfil encontrado</p>
-            <p className="text-xs text-muted-foreground max-w-xs">
-              Tente buscar por outro nome, área ou habilidade técnica.
-            </p>
-          </div>
-        )}
 
-        <ProfileDetail
-          profile={selectedProfile}
-          onClose={() => setSelectedProfile(null)}
-        />
+            <SearchBar
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="Buscar por nome, área ou habilidade..."
+            />
+          </header>
 
-        <p className="text-sm opacity-70">Teste2</p>
-      </section>
+          {hasResults ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {filteredProfiles.map((profile) => (
+                <PerfilCard
+                  key={profile.id}
+                  profile={profile}
+                  onClick={() => setSelectedProfile(profile)}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="flex flex-col items-center justify-center py-16 gap-3 text-center">
+              <div className="w-16 h-16 rounded-full border border-dashed border-gray-300 flex items-center justify-center mb-2">
+                <span className="text-2xl">🔍</span>
+              </div>
+              <p className="text-sm font-medium">Nenhum perfil encontrado</p>
+              <p className="text-xs text-muted-foreground max-w-xs">
+                Tente buscar por outro nome, área ou habilidade técnica.
+              </p>
+            </div>
+          )}
+
+          <ProfileDetail
+            profile={selectedProfile}
+            onClose={() => setSelectedProfile(null)}
+          />
+        </section>
+      </div>
     </div>
   );
+
 };
 
 export default RedeSocial;
