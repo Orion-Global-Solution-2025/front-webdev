@@ -11,18 +11,29 @@ interface ProfileDetailProps {
 
 
 const ProfileDetail = ({ profile, onClose }: ProfileDetailProps) => {
-  if (!profile) {
+    if (!profile) {
     return (
       <Card className="p-6 bg-card text-center text-card-foreground">
-        <p>Nenhum perfil selecionado</p>
-        {onClose && (
-          <Button variant="outline" className="mt-4" onClick={onClose}>
-            Fechar
-          </Button>
-        )}
+        <p className="m-16">Nenhum perfil selecionado</p>
+
+        <Button
+          variant="outline"
+          className="mt-4"
+          onClick={() => {
+            if (typeof window !== "undefined") {
+              window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+              });
+            }
+          }}
+        >
+          Subir para o Topo da Página
+        </Button>
       </Card>
     );
   }
+
 
   return (
     <Card className="p-6 bg-card text-card-foreground mb-6">
