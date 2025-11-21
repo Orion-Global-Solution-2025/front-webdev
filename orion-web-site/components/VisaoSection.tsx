@@ -1,5 +1,5 @@
 import Button from "./ui/button";
-import { Cpu } from "lucide-react";
+import { Cpu, Github, ArrowRight } from "lucide-react";
 
 type VisaoSectionProps = {
   onSeeHowWorks: () => void;
@@ -34,11 +34,21 @@ const VisaoSection = ({ onSeeHowWorks }: VisaoSectionProps) => {
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <Button showArrow={true}>
-                Solicitar Demonstração
+              <Button
+                onClick={() =>
+                  window.open(
+                    "https://github.com/Orion-Global-Solution-2025/front-webdev.git",
+                    "_blank",
+                    "noopener,noreferrer"
+                  )
+                }
+              >
+                Link GitHub 
+                <Github className="w-5 h-5 mr-2" />             
               </Button>
               <Button onClick={onSeeHowWorks}>
                 Ver como funciona
+                <ArrowRight className="group-hover:translate-x-1 transition-transform" />
               </Button>
             </div>
 

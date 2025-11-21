@@ -63,7 +63,7 @@ const ComponenteAcao = () => {
               className="bg-white text-primary hover:bg-white/90 border-0 group shadow-glow"
               onClick={() => setIsFormOpen(true)}
             >
-              Link GitHub
+              Solicitar Demonstração
               <ArrowRight className="group-hover:translate-x-1 transition-transform" />
             </Button>
 
