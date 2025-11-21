@@ -16,13 +16,6 @@ const inactiveClasses = `
   hover:bg-gray-50
 `;
 
-/**
- * Componente Badge que não usa 'cn' e pode ser "ativo" ou "inativo".
- * * @param {object} props
- * @param {React.Node} props.children O conteúdo do badge.
- * @param {boolean} [props.active=false] Se o badge deve ter o estilo "ativo" (azul).
- * @param {string} [props.className] Classes CSS adicionais para mesclar.
- */
 export default function FlagTipo({ children, active = false, className = '', ...props }: { children?: React.ReactNode; active?: boolean; className?: string; [key: string]: any }) {
 
   return (
