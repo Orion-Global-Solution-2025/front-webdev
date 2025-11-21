@@ -31,10 +31,14 @@ const ComponenteAcao = () => {
               <ArrowRight className="group-hover:translate-x-1 transition-transform" />
             </Button>
             
-            <Button 
-              size="lg" 
-              variant="ghost" 
+            <Button
+              size="lg"
+              variant="ghost"
               className="text-white hover:bg-white/10 border-2 border-white/30"
+              onClick={() => {
+                window.location.href =
+                  "mailto:contato@orion.tech?subject=Quero%20falar%20com%20um%20especialista%20Orion&body=Olá%2C%20gostaria%20de%20conversar%20sobre%20a%20implementação%20do%20Orion%20na%20minha%20instituição.";
+              }}
             >
               <Mail className="mr-2" />
               Falar com Especialista
