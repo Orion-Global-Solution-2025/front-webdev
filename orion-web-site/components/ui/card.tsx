@@ -2,7 +2,7 @@ import type { ComponentType, HTMLAttributes, ReactNode } from "react";
 
 interface FeatureCardProps extends HTMLAttributes<HTMLDivElement> {
   Icon?: ComponentType<{ className?: string }>;
-  title: string;
+  title?: string;
   children: ReactNode;
 }
 

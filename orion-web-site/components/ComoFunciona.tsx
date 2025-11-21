@@ -63,7 +63,8 @@ const HowItWorks = () => {
                   <div className="hidden lg:block absolute top-20 left-[60%] w-full h-0.5 bg-gradient-to-r from-primary to-secondary" />
                 )}
                 
-                <Card className="p-6 text-center relative hover:shadow-card transition-all duration-300 bg-card/50 backdrop-blur">
+                <Card 
+                className="p-6 text-center relative hover:shadow-card transition-all duration-300 bg-card/50 backdrop-blur">
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center text-white font-bold text-lg shadow-primary">
                     {step.step}
                   </div>
