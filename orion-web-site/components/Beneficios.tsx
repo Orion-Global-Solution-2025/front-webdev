@@ -61,6 +61,7 @@ const Benefits = () => {
             return (
               <Card
                 key={index}
+                title={benefit.title}
                 className="p-8 hover:shadow-card transition-all duration-300 hover:-translate-y-2 border-2"
               >
                 <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${benefit.color} flex items-center justify-center mb-6 shadow-primary`}>
