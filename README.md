@@ -7,6 +7,8 @@
 
 Aplicação front-end do projeto **Orion Global Solution 2025**, responsável pela experiência de navegação do site e das áreas internas (rotas já estruturadas para dashboards, páginas institucionais e telas de usuários).
 
+<img width="1743" height="882" alt="image" src="https://github.com/user-attachments/assets/d85c632d-de3d-42c7-8dd4-086695c90eea" />
+
 ---
 
 ## 🏗️ Stack principal
@@ -70,4 +72,5 @@ npm install
 ```bash
 npm run dev
 ```
+
 
