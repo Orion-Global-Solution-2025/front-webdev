@@ -71,7 +71,7 @@ const VisaoSection = ({ onSeeHowWorks }: VisaoSectionProps) => {
 
           <div className="relative lg:h-[600px] rounded-2xl overflow-hidden shadow-glow animate-fade-in-delayed">
             <video
-              src="/videos/hero-gift.mp4"
+              src="\videos\hero-gift.mp4"
               autoPlay
               loop
               muted
