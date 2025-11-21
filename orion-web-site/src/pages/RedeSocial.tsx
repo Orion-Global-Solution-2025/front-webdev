@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import FlagTipo from "../../components/ui/FlagTipo";
 import { SearchBar } from "../../components/ui/SearchBar";
 import PerfilCard from "../../components/PerfilCard";
@@ -44,6 +44,7 @@ const RedeSocial = ({ theme }: { theme?: "light" | "dark" }) => {
 
   const allSkills = profiles.flatMap((p) => p.habilidadesTecnicas || []);
   const totalSkills = new Set(allSkills).size;
+  const detailRef = useRef<HTMLDivElement | null>(null);
 
   const areaCounts: Record<string, number> = {};
   profiles.forEach((p) => {
@@ -96,13 +97,6 @@ const RedeSocial = ({ theme }: { theme?: "light" | "dark" }) => {
     { mes: "Mai", taxa: 10 },
     { mes: "Jun", taxa: 9 },
   ];
-
-  const getTabTitle = () => {
-    if (activeTab === "instituicoes") return "Para Instituições";
-    if (activeTab === "professores") return "Para Professores";
-    if (activeTab === "alunos") return "Para Alunos";
-    return "";
-  };
 
   const engajamentoPorSala = [
     { turma: "ADS 1º período - Noite", engajamento: 82 },
@@ -208,6 +202,24 @@ const RedeSocial = ({ theme }: { theme?: "light" | "dark" }) => {
     },
   ];
 
+  const handleRecommendProfile = () => {
+    if (!hasResults) return;
+
+    const randomIndex = Math.floor(Math.random() * filteredProfiles.length);
+    const randomProfile = filteredProfiles[randomIndex];
+
+    setSelectedProfile(randomProfile);
+
+    setTimeout(() => {
+      if (detailRef.current) {
+        detailRef.current.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }, 0);
+  };
+
   return (
     <div
       className={
@@ -248,11 +260,24 @@ const RedeSocial = ({ theme }: { theme?: "light" | "dark" }) => {
             </div>
 
             {activeTab === "experiencias" && (
-              <SearchBar
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder="Buscar por nome, área ou habilidade..."
-              />
+              <div className="space-y-3">
+                <SearchBar
+                  value={query}
+                  onChange={(event) => setQuery(event.target.value)}
+                  placeholder="Buscar por nome, área ou habilidade..."
+                />
+
+                <div className="flex justify-center">
+                  <button
+                    type="button"
+                    onClick={handleRecommendProfile}
+                    disabled={!hasResults}
+                    className="px-4 py-2 rounded-full text-xs font-medium bg-gradient-to-r from-[#00b4ff] to-[#8b5cf6] text-white shadow-sm hover:opacity-95 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    Recomendar Profissional
+                  </button>
+                </div>
+              </div>
             )}
           </header>
 
@@ -280,10 +305,12 @@ const RedeSocial = ({ theme }: { theme?: "light" | "dark" }) => {
                 </div>
               )}
 
-              <ProfileDetail
-                profile={selectedProfile}
-                onClose={() => setSelectedProfile(null)}
-              />
+              <div ref={detailRef}>
+                <ProfileDetail
+                  profile={selectedProfile}
+                  onClose={() => setSelectedProfile(null)}
+                />
+              </div>
             </>
           )}
 
