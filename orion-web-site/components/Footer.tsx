@@ -1,5 +1,5 @@
 import orionLogo from "../img/orion-logo-png-sem-frase.png";
-import { Camera, Mail, Linkedin, Twitter, Instagram } from "lucide-react";
+import { Linkedin, Twitter, Instagram } from "lucide-react";
 
 const Footer = ({ theme }) => {
   const isDark = theme === 'dark';
