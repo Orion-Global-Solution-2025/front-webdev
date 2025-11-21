@@ -18,24 +18,37 @@ const RedeSocial = ({ theme }: { theme?: "light" | "dark" }) => {
   >("experiencias");
 
   const [query, setQuery] = useState("");
-  const normalizedQuery = query.trim().toLowerCase();
-  const filteredProfiles = normalizedQuery
-    ? profiles.filter((profile) => {
-        const texto = [
-          profile.nome,
-          profile.cargo,
-          profile.area,
-          profile.localizacao,
-          ...(profile.habilidadesTecnicas || []),
-          ...(profile.softSkills || []),
-          ...(profile.areaInteresses || []),
-        ]
-          .join(" ")
-          .toLowerCase();
 
-        return texto.includes(normalizedQuery);
-      })
-    : profiles;
+  const [filtroArea, setFiltroArea] = useState("");
+  const [filtroCidade, setFiltroCidade] = useState("");
+  const [filtroTecnologia, setFiltroTecnologia] = useState("");
+
+  const normalizedQuery = query.trim().toLowerCase();
+
+  const filteredProfiles = profiles.filter((profile) => {
+    const texto = [
+      profile.nome,
+      profile.cargo,
+      profile.area,
+      profile.localizacao,
+      ...(profile.habilidadesTecnicas || []),
+      ...(profile.softSkills || []),
+      ...(profile.areaInteresses || []),
+    ]
+      .join(" ")
+      .toLowerCase();
+
+    const matchQuery = normalizedQuery ? texto.includes(normalizedQuery) : true;
+    const matchArea = filtroArea ? profile.area === filtroArea : true;
+    const matchCidade = filtroCidade
+      ? profile.localizacao === filtroCidade
+      : true;
+    const matchTech = filtroTecnologia
+      ? (profile.habilidadesTecnicas || []).includes(filtroTecnologia)
+      : true;
+
+    return matchQuery && matchArea && matchCidade && matchTech;
+  });
 
   const hasResults = filteredProfiles.length > 0;
 
@@ -44,6 +57,7 @@ const RedeSocial = ({ theme }: { theme?: "light" | "dark" }) => {
 
   const allSkills = profiles.flatMap((p) => p.habilidadesTecnicas || []);
   const totalSkills = new Set(allSkills).size;
+
   const detailRef = useRef<HTMLDivElement | null>(null);
 
   const areaCounts: Record<string, number> = {};
@@ -55,11 +69,18 @@ const RedeSocial = ({ theme }: { theme?: "light" | "dark" }) => {
   allSkills.forEach((skill) => {
     skillCounts[skill] = (skillCounts[skill] || 0) + 1;
   });
+
   const topSkills = Object.entries(skillCounts)
     .sort((a, b) => b[1] - a[1])
     .slice(0, 5);
 
   const alertProfiles = profiles.slice(0, 4);
+
+  const areasDisponiveis = Array.from(new Set(profiles.map((p) => p.area))).sort();
+  const cidadesDisponiveis = Array.from(
+    new Set(profiles.map((p) => p.localizacao))
+  ).sort();
+  const tecnologiasDisponiveis = Array.from(new Set(allSkills)).sort();
 
   const evasaoTrend = [
     { mes: "Jan", taxa: 14 },
@@ -115,8 +136,7 @@ const RedeSocial = ({ theme }: { theme?: "light" | "dark" }) => {
     {
       metodologia: "Estudo de caso em grupo",
       impacto: 16,
-      descricao:
-        "Aumenta discussões em sala e conexão com problemas reais.",
+      descricao: "Aumenta discussões em sala e conexão com problemas reais.",
     },
     {
       metodologia: "Aulas invertidas (flipped classroom)",
@@ -179,8 +199,7 @@ const RedeSocial = ({ theme }: { theme?: "light" | "dark" }) => {
       principalHabilidade: "Colaboração em projetos",
       pontosFortes:
         "Bom desempenho em trabalhos em grupo e apresentações.",
-      aMelhorar:
-        "Planejamento de longo prazo para projetos maiores.",
+      aMelhorar: "Planejamento de longo prazo para projetos maiores.",
       maiorIdentificacao:
         "Projetos em grupo com entregas parciais.",
     },
@@ -188,15 +207,11 @@ const RedeSocial = ({ theme }: { theme?: "light" | "dark" }) => {
       semestre: "3º semestre",
       nota: 8.9,
       presenca: 88,
-      habilidadesNovas: [
-        "Pensamento crítico",
-        "Autonomia na aprendizagem",
-      ],
+      habilidadesNovas: ["Pensamento crítico", "Autonomia na aprendizagem"],
       principalHabilidade: "Resolução de problemas complexos",
       pontosFortes:
         "Capacidade de análise e tomada de decisão em estudos de caso.",
-      aMelhorar:
-        "Equilíbrio entre carga de trabalho, estágio e estudo.",
+      aMelhorar: "Equilíbrio entre carga de trabalho, estágio e estudo.",
       maiorIdentificacao:
         "Estudos de caso e projetos conectados ao mercado.",
     },
@@ -267,15 +282,58 @@ const RedeSocial = ({ theme }: { theme?: "light" | "dark" }) => {
                   placeholder="Buscar por nome, área ou habilidade..."
                 />
 
-                <div className="flex justify-center">
-                  <button
-                    type="button"
-                    onClick={handleRecommendProfile}
-                    disabled={!hasResults}
-                    className="px-4 py-2 rounded-full text-xs font-medium bg-gradient-to-r from-[#00b4ff] to-[#8b5cf6] text-white shadow-sm hover:opacity-95 transition disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    Recomendar Profissional
-                  </button>
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex justify-center sm:justify-start">
+                    <button
+                      type="button"
+                      onClick={handleRecommendProfile}
+                      disabled={!hasResults}
+                      className="px-4 py-2 rounded-full text-xs font-medium bg-gradient-to-r from-[#00b4ff] to-[#8b5cf6] text-white shadow-sm hover:opacity-95 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      Recomendar Profissional
+                    </button>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2 text-[11px]">
+                    <select
+                      value={filtroArea}
+                      onChange={(e) => setFiltroArea(e.target.value)}
+                      className="border border-border rounded-full px-3 py-1 bg-background text-foreground"
+                    >
+                      <option value="">Área (todas)</option>
+                      {areasDisponiveis.map((area) => (
+                        <option key={area} value={area}>
+                          {area}
+                        </option>
+                      ))}
+                    </select>
+
+                    <select
+                      value={filtroCidade}
+                      onChange={(e) => setFiltroCidade(e.target.value)}
+                      className="border border-border rounded-full px-3 py-1 bg-background text-foreground"
+                    >
+                      <option value="">Cidade (todas)</option>
+                      {cidadesDisponiveis.map((cidade) => (
+                        <option key={cidade} value={cidade}>
+                          {cidade}
+                        </option>
+                      ))}
+                    </select>
+
+                    <select
+                      value={filtroTecnologia}
+                      onChange={(e) => setFiltroTecnologia(e.target.value)}
+                      className="border border-border rounded-full px-3 py-1 bg-background text-foreground"
+                    >
+                      <option value="">Tecnologia (todas)</option>
+                      {tecnologiasDisponiveis.map((tech) => (
+                        <option key={tech} value={tech}>
+                          {tech}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
               </div>
             )}
@@ -540,10 +598,7 @@ const RedeSocial = ({ theme }: { theme?: "light" | "dark" }) => {
                           <div
                             className="h-full bg-gradient-to-r from-[#00b4ff] to-[#8b5cf6]"
                             style={{
-                              width: `${Math.min(
-                                100,
-                                20 + count * 15
-                              )}%`,
+                              width: `${Math.min(100, 20 + count * 15)}%`,
                             }}
                           />
                         </div>
