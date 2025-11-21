@@ -1,10 +1,14 @@
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 
+type ButtonSize = "sm" | "md" | "lg";
+type ButtonVariant = "primary" | "outline" | "ghost";
+
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   children: ReactNode;
   showArrow?: boolean;
+  size?: ButtonSize;
+  variant?: ButtonVariant;
 };
-
 export default function Button({
   children,
   onClick,
