@@ -19,7 +19,7 @@ Aplicação front-end do projeto **Orion Global Solution 2025**, responsável pe
 - CSS moderno (estilos componentizados / UI customizada)
 - Build com ferramentas modernas do ecossistema JavaScript (ex.: Vite ou similar)
 
-> Obs.: ajuste esta seção conforme o stack real do projeto (ex.: adicionar Tailwind, Styled Components, etc.).
+> Obs.: ajuste esta seção conforme o stack real do projeto (ex.: adicionar Tailwind, Styled Components, etc).
 
 ---
 
@@ -38,7 +38,7 @@ front-webdev/
 │   ├── public/            # Arquivos estáticos públicos
 │   ├── package.json       # Scripts e dependências do front
 │   └── ...
-└── README.md              # Este arquivo
+└── README.md              # Este arquivo.
 ```
 A estrutura acima é ilustrativa e pode variar levemente de acordo com a organização interna do código.
 
@@ -72,5 +72,6 @@ npm install
 ```bash
 npm run dev
 ```
+
 
 
